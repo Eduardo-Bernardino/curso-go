@@ -56,4 +56,24 @@ func main() {
 	fmt.Println(array3)
 	fmt.Println(slice2)
 
+	//Arrays internos
+	fmt.Println("Arrays internos")
+	slice3 := make([]float32, 10, 11)
+	fmt.Println(slice3)
+	fmt.Println(len(slice3))
+	fmt.Println(cap(slice3))
+
+	//cuiriosidade sobre o slice, toda vez q ele estoura o tamanho ele dobra o tamanho, desta forma nunca fica sem "espaço"
+
+	slice3 = append(slice3, 8)
+	fmt.Println(slice3)
+	fmt.Println(len(slice3))
+	fmt.Println(cap(slice3))
+
+	fmt.Println("estourando o slice")
+	slice3 = append(slice3, 9)
+	fmt.Println(slice3)
+	fmt.Println(len(slice3))
+	fmt.Println(cap(slice3)) //demonstra o slice estourando e dobrando o tamanho, de 12 para 24
+
 }
