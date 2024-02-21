@@ -21,8 +21,10 @@
     <h1>
         Pagina Inicial
     </h1>
-    <marquee>
-        <h4>Seja bem vindo! {{ .Nome }}</h4>
-    </marquee>
+    <button id="botao">Teste!</button>
+    <script>
+        var botao = document.getElementById("botao")
+        botao.onclick = ()=>{alert("teste")}
+    </script>
 </body>
 </html>
