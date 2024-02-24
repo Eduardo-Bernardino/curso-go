@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("Maps")
 
-	usuario := map[string]string{ //todos devem ser do mesmo tipo de dados, dentro dos [] é o tipo das chaves e fora é o tipo dos valores
+	usuario := map[string]string{ //todos devem ser do mesmo tipo de dados, tanto os dentro das chaves quanto o de fora, oqual é o tipo dos valores
 		"nome":      "joe ",
 		"sobrenome": "doe",
 	}
