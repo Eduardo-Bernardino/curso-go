@@ -2,7 +2,6 @@ package banco
 
 import (
 	"database/sql"
-	"fmt"
 
 	_ "github.com/go-sql-driver/mysql" //Driver para mysql
 )
@@ -20,7 +19,6 @@ func Conectar() (*sql.DB, error) {
 	if erro = db.Ping(); erro != nil {
 		return nil, erro
 	}
-	fmt.Println("Conexão esta aberta")
 
 	return db, nil
 }

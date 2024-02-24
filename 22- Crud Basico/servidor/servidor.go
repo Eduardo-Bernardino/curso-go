@@ -176,7 +176,6 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	//Statement
-
 	statement, erro := db.Prepare("update usuarios set nome = ?, email = ? where id = ?")
 	if erro != nil {
 		w.Write([]byte("Erro ao criar o statement"))
@@ -186,6 +185,39 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 	if _, erro := statement.Exec(user.Nome, user.Email, ID); erro != nil {
 		w.Write([]byte("Erro ao atualizar o usuario"))
+		return
+	}
+
+	w.WriteHeader(http.StatusNoContent)
+}
+
+// Deletar usuario, deleta o usuario do banco de dados
+func DeleteUser(w http.ResponseWriter, r *http.Request) {
+	parametros := mux.Vars(r)
+
+	ID, erro := strconv.ParseUint(parametros["id"], 10, 64)
+	if erro != nil {
+		w.Write([]byte("Erro ao converter o parametro para int"))
+		return
+	}
+
+	db, erro := banco.Conectar()
+	if erro != nil {
+		w.Write([]byte("Erro conectar com o banco"))
+		return
+	}
+	defer db.Close()
+
+	//Statement
+	statement, erro := db.Prepare("delete from usuarios where id = ?")
+	if erro != nil {
+		w.Write([]byte("Erro ao criar o statement"))
+		return
+	}
+	defer statement.Close()
+
+	if _, erro := statement.Exec(ID); erro != nil {
+		w.Write([]byte("Erro ao deletar o usuario"))
 		return
 	}
 
